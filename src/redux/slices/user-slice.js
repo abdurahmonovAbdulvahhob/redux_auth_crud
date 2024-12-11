@@ -23,7 +23,7 @@ const userSlice = createSlice({
         (item) => item.id == action.payload.id
       );
       if (index !== -1) {
-        state.value.splice(index, 1, action.payload);
+        state.value[index] = action.payload
         state.status = "create";
         state.updatingData = null;
         localStorage.setItem("user", JSON.stringify(state.value));

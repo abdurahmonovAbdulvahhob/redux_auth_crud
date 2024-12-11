@@ -16,6 +16,7 @@ const userSlice = createSlice({
     saveUser(state, action) {
       state.updatingData = action.payload;
       state.status = "update";
+      console.log("saveUser");
     },
     updateUser: (state, action) => {
       const index = state.value.findIndex(
@@ -23,8 +24,9 @@ const userSlice = createSlice({
       );
       if (index !== -1) {
         state.value.splice(index, 1, action.payload);
-        state.status == "create";
-        localStorage.setItem("user", JSON.stringify(state.value))
+        state.status = "create";
+        state.updatingData = null;
+        localStorage.setItem("user", JSON.stringify(state.value));
       }
     },
     deleteUser: (state, action) => {

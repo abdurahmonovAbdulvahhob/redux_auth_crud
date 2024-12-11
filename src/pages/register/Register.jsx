@@ -14,7 +14,7 @@ const Register = () => {
   };
   const { status, updatingData, value: users } = useSelector((s) => s.user);
   const [data, setData] = useState(initialState);
-
+  console.log(status);
   useEffect(() => {
     if (status === "update") {
       setData({
@@ -33,7 +33,9 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (users.some((user) => user.email === data.email && user.id !== data.id)) {
+    if (
+      users.some((user) => user.email === data.email && user.id !== data.id)
+    ) {
       return alert("User already exists!");
     }
     if (data.password !== data.confirmPassword) {
